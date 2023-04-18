@@ -55,7 +55,7 @@ python3 manage.py runserver
 
 ### Создание суперпользователя
 Выполнить команду и следовать инструкциям:
-```sh
+```
 python3 manage.py createsuperuser
 ```
 После создания супепользователя можно использовать данные учетной записи для страницы администрирования - http://127.0.0.1:8000/admin/
@@ -76,25 +76,25 @@ Response:
 
 ```json
 {
-    "count": 5,
-    "next": "http://127.0.0.1:8000/api/v1/posts/?limit=2&offset=3",
+    "count": 3,
+    "next": null,
     "previous": "http://127.0.0.1:8000/api/v1/posts/?limit=2",
     "results": [
         {
             "id": 2,
             "author": "string",
             "text": "string",
-            "pub_date": "2023-04-17T12:11:17.273956Z",
-            "image": "string",
-            "group": 0
+            "pub_date": "2023-04-18T13:41:19.546891Z",
+            "image": null,
+            "group": null
         },
         {
-            "id": 3,
+            "id": 1,
             "author": "string",
             "text": "string",
-            "pub_date": "2023-04-17T13:12:39.095878Z",
-            "image": "string",
-            "group": 0
+            "pub_date": "2023-04-18T13:39:26.793732Z",
+            "image": null,
+            "group": null
         }
     ]
 }
@@ -119,7 +119,7 @@ Response:
     "id": 0,
     "author": "string",
     "text": "string",
-    "pub_date": "2023-04-17T13:12:39.095878Z",
+    "pub_date": "2023-04-18T13:39:26.793732Z",
     "image": "string",
     "group": 0
 }
@@ -136,9 +136,9 @@ Response:
     {
         "id": 1,
         "author": "string",
-        "post": 1,
         "text": "string",
-        "created": "2023-04-17T13:12:39.095878Z"
+        "created": "2023-04-18T13:46:48.550123Z",
+        "post": 1
     }
 ]
 ```
@@ -149,7 +149,7 @@ Request body:
 
 ```json
 {
-    "text": "1st comment"
+    "text": "string"
 }
 ```
 
@@ -159,9 +159,9 @@ Response:
 {
     "id": 1,
     "author": "string",
-    "post": 1,
     "text": "string",
-    "created": "2023-04-17T13:12:39.095878Z"
+    "created": "2023-04-18T13:46:48.550123Z",
+    "post": 1
 }
 ```
 
