@@ -3,11 +3,12 @@ from rest_framework.permissions import SAFE_METHODS, BasePermission
 
 class IsAuthorOrReadOnly(BasePermission):
     """
-    Object-level permission to only allow authors of an object to edit it.
-    Assumes the model instance has an `author` attribute.
+    Пермишен на безопасный метод запроса, аутентификацию,
+    разрешает полный доступ к объекту только автору.
     """
 
-    def has_object_permission(self, request, view, obj):
-        return bool(
-            request.method in SAFE_METHODS or obj.author == request.user
-        )
+    def has_permission(self, request, view) -> bool:
+        return request.method in SAFE_METHODS or request.user.is_authenticated
+
+    def has_object_permission(self, request, view, obj) -> bool:
+        return request.method in SAFE_METHODS or obj.author == request.user

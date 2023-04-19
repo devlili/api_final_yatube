@@ -18,7 +18,7 @@ class PostSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     """Сериализатор для объектов модели Comment."""
 
-    author = serializers.SlugRelatedField(
+    author = SlugRelatedField(
         read_only=True, slug_field="username"
     )
 
@@ -39,12 +39,12 @@ class GroupSerializer(serializers.ModelSerializer):
 class FollowSerializer(serializers.ModelSerializer):
     """Сериализатор для объектов модели Follow."""
 
-    user = serializers.SlugRelatedField(
+    user = SlugRelatedField(
         read_only=True,
         slug_field="username",
         default=serializers.CurrentUserDefault(),
     )
-    following = serializers.SlugRelatedField(
+    following = SlugRelatedField(
         slug_field="username", queryset=User.objects.all()
     )
 
@@ -54,7 +54,9 @@ class FollowSerializer(serializers.ModelSerializer):
 
         validators = [
             UniqueTogetherValidator(
-                queryset=Follow.objects.all(), fields=("user", "following")
+                queryset=Follow.objects.all(),
+                fields=("user", "following"),
+                message="Вы уже подписаны на этого автора.",
             )
         ]
 
